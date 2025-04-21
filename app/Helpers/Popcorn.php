@@ -12,7 +12,7 @@ class Popcorn
             $token = session('app-access-token');
         }
 
-        $response = Http::acceptJson()->withToken($token)->get(config('services.api.url').$url);
+        $response = Http::withoutVerifying()->acceptJson()->withToken($token)->get(config('services.api.url').$url);
 
         $data = json_decode($response->body());
 
@@ -25,7 +25,7 @@ class Popcorn
             $token = session('app-access-token');
         }
 
-        $response = Http::acceptJson($token)->withToken($token)->post(config('services.api.url').$url, $params);
+        $response = Http::withoutVerifying()->acceptJson($token)->withToken($token)->post(config('services.api.url').$url, $params);
 
         $data = json_decode($response->body());
 
@@ -38,7 +38,7 @@ class Popcorn
             $token = session('app-access-token');
         }
 
-        $response = Http::acceptJson($token)->withToken($token)->patch(config('services.api.url').$url, $params);
+        $response = Http::withoutVerifying()->acceptJson($token)->withToken($token)->patch(config('services.api.url').$url, $params);
 
         $data = json_decode($response->body());
 
@@ -51,7 +51,7 @@ class Popcorn
             $token = session('app-access-token');
         }
 
-        $response = Http::acceptJson($token)->withToken($token)->delete(config('services.api.url').$url, $params);
+        $response = Http::withoutVerifying()->acceptJson($token)->withToken($token)->delete(config('services.api.url').$url, $params);
 
         $data = json_decode($response->body());
 

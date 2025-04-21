@@ -32,7 +32,7 @@ class Login extends Component
 
         $this->ensureIsNotRateLimited();
 
-        $response = Http::post(config('services.api.url').'auth/login', [
+        $response = Http::withoutVerifying()->post(config('services.api.url').'auth/login', [
             'email' => $this->email,
             'password' => $this->password,
         ]);

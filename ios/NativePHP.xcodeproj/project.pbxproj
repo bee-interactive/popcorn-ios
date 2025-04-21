@@ -2088,7 +2088,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NativePHP/NativePHP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"NativePHP/Preview Content\"";
 				DEVELOPMENT_TEAM = QQQLBP77SJ;
 				ENABLE_PREVIEWS = YES;
@@ -2112,7 +2112,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/iphoneos",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = "-lresolv";
 				PRODUCT_BUNDLE_IDENTIFIER = swiss.interactive.popcorn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2129,7 +2129,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NativePHP/NativePHP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"NativePHP/Preview Content\"";
 				DEVELOPMENT_TEAM = QQQLBP77SJ;
 				ENABLE_PREVIEWS = YES;
@@ -2153,7 +2153,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libraries/iphoneos",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = "-lresolv";
 				PRODUCT_BUNDLE_IDENTIFIER = swiss.interactive.popcorn;
 				PRODUCT_NAME = "$(TARGET_NAME)";

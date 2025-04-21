@@ -34,7 +34,7 @@ class Register extends Component
         ]);
 
         try {
-            $call = Http::post(config('services.api.url').'auth/register', [
+            $call = Http::withoutVerifying()->post(config('services.api.url').'auth/register', [
                 'name' => $validated['name'],
                 'username' => $validated['username'],
                 'email' => $validated['email'],
@@ -44,7 +44,7 @@ class Register extends Component
             return redirect('/login');
         }
 
-        $response = Http::post(config('services.api.url').'auth/login', [
+        $response = Http::withoutVerifying()->post(config('services.api.url').'auth/login', [
             'email' => $validated['email'],
             'password' => $validated['password'],
         ]);

@@ -44,11 +44,13 @@
             <flux:spacer />
 
             <flux:dropdown position="bottom" class="hidden sm:block" align="start">
-                <flux:profile
-                    :name="session('app-user')['name']"
-                    avatar="{{ session('app-user')['profile_picture'] }}"
-                    icon-trailing="chevrons-up-down"
-                />
+                @isset(session('app-user')['profile_picture'])
+                    <flux:profile
+                        :name="session('app-user')['name']"
+                        avatar="{{ session('app-user')['profile_picture'] }}"
+                        icon-trailing="chevrons-up-down"
+                    />
+                @endisset
 
                 <flux:menu class="w-[220px]">
                     <flux:menu.radio.group>
