@@ -7,7 +7,7 @@ use App\Http\Controllers\List\ListController;
 use App\Http\Controllers\Trending\TrendingController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\ViewedItems\ViewedItemsController;
-use App\Http\Controllers\Welcome\WelcomeController;
+use App\Http\Middleware\LocaleMiddleware;
 use App\Http\Middleware\RedirectIfAuthenticatedToDashboard;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
@@ -15,9 +15,9 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Tmdb;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', WelcomeController::class)->name('welcome');
+Route::redirect('/', '/dashboard');
 
-Route::middleware(RedirectIfAuthenticatedToDashboard::class)->group(function () {
+Route::middleware([RedirectIfAuthenticatedToDashboard::class, LocaleMiddleware::class])->group(function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
 
     Route::get('trending', TrendingController::class)->name('trending.index');

@@ -30,21 +30,21 @@ class Register extends Component
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
-            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'string', 'confirmed'],
         ]);
 
         try {
-            $call = Http::withoutVerifying()->post(config('services.api.url').'auth/register', [
+            $call = Http::post(config('services.api.url').'auth/register', [
                 'name' => $validated['name'],
                 'username' => $validated['username'],
                 'email' => $validated['email'],
                 'password' => $validated['password'],
             ]);
         } catch (\Throwable $th) {
-            return redirect('/login');
+            return redirect('/login')->with('error', __($th->getMessage()));
         }
 
-        $response = Http::withoutVerifying()->post(config('services.api.url').'auth/login', [
+        $response = Http::post(config('services.api.url').'auth/login', [
             'email' => $validated['email'],
             'password' => $validated['password'],
         ]);

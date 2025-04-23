@@ -14,13 +14,6 @@ class TmdbConnector extends Connector
         return 'https://api.themoviedb.org/3';
     }
 
-    public function defaultConfig(): array
-    {
-        return [
-            'verify' => false,
-        ];
-    }
-
     protected function defaultHeaders(): array
     {
         return [

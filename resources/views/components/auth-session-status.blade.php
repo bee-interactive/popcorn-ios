@@ -1,9 +1,12 @@
 @props([
     'status',
+    'error',
 ])
 
 @if ($status)
-    <div {{ $attributes->merge(['class' => 'font-medium text-sm text-green-600']) }}>
-        {{ $status }}
-    </div>
+    <flux:callout variant="success" icon="x-circle" heading="{{ $status }}" />
+@endif
+
+@if ($error)
+    <flux:callout variant="danger" icon="x-circle" heading="{{ $error }}" />
 @endif

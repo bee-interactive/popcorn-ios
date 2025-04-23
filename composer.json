@@ -20,6 +20,7 @@
         "pinkary-project/type-guard": "^0.1.0",
         "saloonphp/laravel-plugin": "^3.5",
         "saloonphp/saloon": "^3.11",
+        "spatie/image": "^3.8",
         "staudenmeir/eloquent-has-many-deep": "^1.21",
         "wire-elements/modal": "^2.0"
     },

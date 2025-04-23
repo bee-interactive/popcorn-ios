@@ -56,13 +56,25 @@ struct NativePHPApp: App {
         openssl.cafile="\(caPath)"
         """
 
-        let path = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first!
-            .appendingPathComponent("Application Support/php.ini")
+        let appSupportDir = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first!
+            .appendingPathComponent("Application Support")
 
+        let path = appSupportDir.appendingPathComponent("php.ini")
+
+        // Ensure the directory exists
+        do {
+            try FileManager.default.createDirectory(at: appSupportDir, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print("Failed to create directory: \(error.localizedDescription)")
+            return
+        }
+
+        // Write the php.ini file
         do {
             try phpIni.write(to: path, atomically: true, encoding: .utf8)
+            print("Could write to phpini")
         } catch {
-
+            print("Could not write to phpini: \(error.localizedDescription)")
         }
     }
 
@@ -87,7 +99,11 @@ struct NativePHPApp: App {
     }
     
     private func clearCaches() {
-        _ = artisan(additionalArgs: ["view:clear"])
+        _ = artisan(additionalArgs: ["optimize:clear"])
+    }
+    
+    private func storageLink() {
+        _ = artisan(additionalArgs: ["storage:link"])
     }
 
     private func preparePhpEnvironment() -> String {
@@ -106,6 +122,8 @@ struct NativePHPApp: App {
         migrateDatabase()
         
         clearCaches()
+        
+        storageLink()
 
         return output
     }
@@ -198,6 +216,7 @@ struct NativePHPApp: App {
         // Ensure other directories exist
         _ = getAppSupportDir(dir: "storage/framework/sessions")
         _ = getAppSupportDir(dir: "storage/logs")
+        _ = getAppSupportDir(dir: "storage/framework/cache")
 
         setenv("LARAVEL_STORAGE_PATH", storageDir, 1)
         setenv("VIEW_COMPILED_PATH", viewCacheDir, 1)

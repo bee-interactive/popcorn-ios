@@ -68,9 +68,9 @@
     "Viewed items": "Éléments consultés",
     "Collection": "Collection",
     "No items yet": "Aucun élément pour le moment",
-    "Save :item for later": "Enregistrer :item pour plus tard flux",
+    "Save :item for later": "Enregistrer :item pour plus tard",
     "Choose a list and save this entry.": "Choisissez une liste et enregistrez cette entrée.",
-    "Search for a movie / tv / actor...": "Rechercher un film  / série TV",
+    "Search for a movie / tv show": "Rechercher un film / série TV",
     "Recents additions": "Ajouts récents",
     "Light": "Clair",
     "Dark": "Sombre",
@@ -96,6 +96,7 @@
     "Give your wishlist a name / topic": "Donner un nom/sujet à votre liste de souhaits",
     "Name / topic": "nom / sujet",
     "Wishlist name": "Nom de la liste de souhaits",
+    "Choose wishlist...": "Choisissez une liste",
     "Add to favorites": "Ajouter aux favoris",
     "Elements": "Éléments",
     "Manage your profile and account settings": "Gérer votre profil et les paramètres de votre compte",
@@ -176,7 +177,8 @@
     "Discover items that have been added by others": "Découvrir des éléments ajoutés par d'autres utilisateurs",
     "The image has been uploaded and saved": "L'image a été uploadée et enregistrée",
     "The image has been deleted": "L'image a été supprimée",
-    "Crop your picture": "Recadrer votre image",
-    "Your image does not have the right ratio. You can crop your image to the correct size below": "Votre image n'a pas le bon ratio. Vous pouvez recadrer votre image ci-dessous",
-    "Go Home": "Retour à l’accueil"
+    "Profile picture": "Image de profil",
+    "Crop your image below to a square format": "Recadrez votre image ci-dessous au format carré",
+    "Go Home": "Retour à l’accueil",
+    "Invalid credentials": "Identifiants invalides"
 }

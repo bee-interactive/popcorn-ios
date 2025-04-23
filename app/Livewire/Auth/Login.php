@@ -32,7 +32,7 @@ class Login extends Component
 
         $this->ensureIsNotRateLimited();
 
-        $response = Http::withoutVerifying()->post(config('services.api.url').'auth/login', [
+        $response = Http::post(config('services.api.url').'auth/login', [
             'email' => $this->email,
             'password' => $this->password,
         ]);
@@ -40,6 +40,7 @@ class Login extends Component
         if ($response->ok()) {
             $token = json_decode($response->body())->success->token;
             session(['app-access-token' => $token]);
+            cookie()->queue(cookie('app-access-token', $token, 120000));
 
             $user = Popcorn::post('users/me', $token);
 
@@ -55,9 +56,11 @@ class Login extends Component
                 'profile_picture' => $user['data']->profile_picture,
             ]]);
 
-            return redirect('/');
+            cookie()->queue(cookie('locale', $user['data']->language, 120000));
+
+            return redirect('/dashboard');
         } else {
-            return redirect('/login');
+            return redirect('/login')->with('error', __('Invalid credentials'));
         }
     }
 

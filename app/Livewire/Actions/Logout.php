@@ -12,6 +12,7 @@ class Logout
     public function __invoke()
     {
         session()->forget('app-access-token');
+        cookie()->queue(cookie()->forget('app-access-token'));
 
         Session::invalidate();
         Session::regenerateToken();

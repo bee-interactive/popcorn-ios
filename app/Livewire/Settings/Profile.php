@@ -77,6 +77,8 @@ class Profile extends Component
             'profile_picture' => $user['data']->profile_picture,
         ]]);
 
+        cookie()->queue(cookie('locale', $user['data']->language, 120000));
+
         $this->dispatch('profile-updated');
     }
 }

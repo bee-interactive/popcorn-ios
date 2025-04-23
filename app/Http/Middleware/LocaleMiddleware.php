@@ -15,14 +15,8 @@ class LocaleMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->user()) {
-            return $next($request);
-        }
-
-        $language = $request->user()->language;
-
-        if (isset($language)) {
-            app()->setLocale($language);
+        if (request()->cookie('locale')) {
+            app()->setLocale(request()->cookie('locale'));
         }
 
         return $next($request);
