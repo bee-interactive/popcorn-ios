@@ -11,7 +11,7 @@
                     </div>
 
                     @foreach($dateGroup->users as $userGroup)
-                        <div class="rounded bg-gray-50 pb-2">
+                        <div class="rounded bg-gray-50 dark:bg-[#262626]/40 pb-2">
                             <div class="p-4 pt-2">
                                 <flux:heading size="sm">
                                     <div class="flex justify-between items-end mb-4">

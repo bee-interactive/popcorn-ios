@@ -21,7 +21,7 @@
                         <div class="mt-4 flex space-x-4 justify-start">
                             @if(!$item->watched)
                                 <div class="flex justify-center">
-                                    <flux:button tooltip="{{ __('Mark as viewed') }}" onclick="Livewire.dispatch('openModal', { component: 'item.mark-item-as-viewed', arguments: { item: {{ json_encode($item) }} }})" size="sm" icon="check-circle"></flux:button>
+                                    <flux:button tooltip="{{ __('Mark as viewed') }}" onclick="Livewire.dispatch('openModal', { component: 'item.mark-item-as-viewed', arguments: { uuid: '{{ $item->uuid }}' }})" size="sm" icon="check-circle"></flux:button>
                                 </div>
                             @endif
                         </div>
