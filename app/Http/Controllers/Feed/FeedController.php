@@ -9,7 +9,7 @@ class FeedController
 {
     public function __invoke(): View
     {
-        $items = Popcorn::get('feed');
+        $items = Popcorn::get('users-feed');
 
         return view('feed.index', [
             'items' => $items['data'],

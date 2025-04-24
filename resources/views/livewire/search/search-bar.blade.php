@@ -1,6 +1,6 @@
 <div>
     <flux:command>
-        <flux:command.input clearable wire:model.live="query" icon:trailing="magnifying-glass" placeholder="{{ __('Search for a movie / tv / actor...') }}" />
+        <flux:command.input clearable wire:model.live="query" icon:trailing="magnifying-glass" placeholder="{{ __('Search for a movie / tv show') }}" />
 
         @if($results)
             <flux:command.items>
