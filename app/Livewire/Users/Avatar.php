@@ -4,8 +4,12 @@ namespace App\Livewire\Users;
 
 use Flux\Flux;
 use Livewire\Component;
+use Spatie\Image\Image;
+use Spatie\Image\Enums\ImageDriver;
 use App\Helpers\Popcorn;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class Avatar extends Component
 {
@@ -18,6 +22,8 @@ class Avatar extends Component
     public $height = 300;
 
     public $avatar;
+
+    public string|null $avatarBase64 = null;
 
     public $tmdb_token;
 
@@ -32,21 +38,47 @@ class Avatar extends Component
         $this->public_profile = session('app-user')['public_profile'];
     }
 
-    public function updatedAvatar(): void
+    public function saveAvatar()
     {
-        $this->validate([
-            'avatar' => ['required', 'image', 'max:12288', 'dimensions:min_width=300,min_height=300'],
-        ]);
+        if (! $this->avatarBase64) {
+            throw ValidationException::withMessages([
+                'avatarBase64' => 'No image provided.',
+            ]);
+        }
 
-        $this->avatar->storePubliclyAs('avatar-uuid', 'avatar-uuid.jpg', 'avatars');
+        // Match and extract base64 image data
+        if (! preg_match('/^data:image\/(jpeg|jpg|png);base64,/', $this->avatarBase64, $matches)) {
+            throw ValidationException::withMessages([
+                'avatarBase64' => 'The image must be a JPG, JPEG or PNG.',
+            ]);
+        }
+
+        $extension = strtolower($matches[1]);
+        $base64Image = substr($this->avatarBase64, strpos($this->avatarBase64, ',') + 1);
+        $decodedImage = base64_decode($base64Image, true);
+
+        if ($decodedImage === false) {
+            throw ValidationException::withMessages([
+                'avatarBase64' => 'The image could not be decoded.',
+            ]);
+        }
+
+        $maxSizeInBytes = 10 * 1024 * 1024;
+
+        if (strlen($decodedImage) > $maxSizeInBytes) {
+            throw ValidationException::withMessages([
+                'avatarBase64' => 'The image must not be greater than 10MB.',
+            ]);
+        }
 
         $this->dispatch('openModal', 'support.crop-image', [
-            'temp_image' => 'avatar-uuid.jpg',
+            'temp_image' => 'avatar-uuid.' . $extension,
             'uuid' => 'avatar-uuid',
             'user_uuid' => $this->uuid,
             'field' => 'avatar',
             'width' => $this->width,
             'height' => $this->height,
+            'decoded_image' => $this->avatarBase64,
         ]);
     }
 

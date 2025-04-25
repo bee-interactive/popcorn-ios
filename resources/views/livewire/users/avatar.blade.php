@@ -12,13 +12,52 @@
                     </div>
                 </div>
 
-                <label for="avatar" class="z-0 relative cursor-pointer">
-                    @isset(session('app-user')['profile_picture'])
-                        <img src="{{ session('app-user')['profile_picture'] }}" class="w-32 z-0 shadow-sm border rounded-xl">
-                    @endisset
+                <div x-data="{ preview: null }">
+                    <label for="avatar" class="z-0 relative cursor-pointer">
+                        <template x-if="preview">
+                            <img :src="preview" class="w-32 z-0 shadow-sm border rounded-xl">
+                        </template>
 
-                    <input id="avatar" type="file" wire:model.defer="avatar" class="hidden">
-                </label>
+                        <template x-if="!preview && '{{ session('app-user')['profile_picture'] ?? '' }}'">
+                            <img src="{{ session('app-user')['profile_picture'] }}" class="w-32 z-0 shadow-sm border rounded-xl">
+                        </template>
+
+                        <input
+                            id="avatar"
+                            type="file"
+                            class="hidden"
+                            accept="image/jpeg,image/jpg,image/png"
+                            @change="
+                                const file = $event.target.files[0];
+                                const reader = new FileReader();
+
+                                const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+                                const maxSize = 10 * 1024 * 1024;
+
+                                if (!validTypes.includes(file.type)) {
+                                    alert('The file must be a JPG or PNG image.');
+                                    $event.target.value = null;
+                                    return;
+                                }
+
+                                if (file.size > maxSize) {
+                                    alert('The file must be less than 10MB.');
+                                    $event.target.value = null;
+                                    return;
+                                }
+
+                                reader.onload = (e) => {
+                                    preview = e.target.result;
+                                    $wire.set('avatarBase64', e.target.result).then(() => {
+                                        $wire.saveAvatar();
+                                    });
+                                };
+
+                                if (file) reader.readAsDataURL(file);
+                            "
+                        >
+                    </label>
+                </div>
 
                 @if(isset(session('app-user')['profile_picture']) && session('app-user')['profile_picture'] != 'https://dummyimage.com/45x45/36c5d3/36c5d3')
                     <div class="absolute bottom-1 right-1.5 cursor-pointer">
@@ -27,9 +66,9 @@
                 @endif
             </div>
 
-            <flux:text class="text-sm mt-2">{{ __('Click to set profile picture') }}</flux:text>
+            <flux:text class="text-sm mt-2">{{ __('Click to set profile picture, jpg, png and max 10MB') }}</flux:text>
         </div>
 
-        @error('avatar') <span class="error">{{ $message }}</span> @enderror
+        @error('avatarBase64') <span class="error">{{ $message }}</span> @enderror
     </div>
 </div>

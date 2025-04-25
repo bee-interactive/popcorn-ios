@@ -167,6 +167,7 @@
     "Search...": "Rechercher...",
     "selected": "sélectionné",
     "Interface language": "Langue de l'interface",
+    "Something went wrong. Please try again": "Quelque chose s'est mal passé. Veuillez essayer à nouveau",
     "English": "Anglais",
     "French": "Français",
     "You don’t have any list yet": "Vous n'avez aucune liste pour le moment",
@@ -180,5 +181,6 @@
     "Profile picture": "Image de profil",
     "Crop your image below to a square format": "Recadrez votre image ci-dessous au format carré",
     "Go Home": "Retour à l’accueil",
-    "Invalid credentials": "Identifiants invalides"
+    "Invalid credentials": "Identifiants invalides",
+    "Click to set profile picture, jpg, png and max 10MB": "Cliquer pour choisir une image de profil, jpg, png et max 10 Mo"
 }

@@ -7,6 +7,7 @@ use Flux\Flux;
 use Spatie\Image\Image;
 use App\Helpers\Popcorn;
 use Livewire\WithFileUploads;
+use Spatie\Image\Enums\ImageDriver;
 use LivewireUI\Modal\ModalComponent;
 use Illuminate\Support\Facades\Storage;
 
@@ -40,13 +41,15 @@ class CropImage extends ModalComponent
 
     public int $minHeight = 300;
 
+    public $decoded_image;
+
     #[Override]
     public static function modalMaxWidth(): string
     {
         return '2xl';
     }
 
-    public function mount($temp_image, string $uuid, $user_uuid, $field, int $width, int $height): void
+    public function mount($temp_image, string $uuid, $user_uuid, $field, int $width, int $height, mixed $decoded_image): void
     {
         $this->tmdb_token = session('app-user')['tmdb_token'];
 
@@ -69,18 +72,23 @@ class CropImage extends ModalComponent
         $this->minWidth = $width;
 
         $this->minHeight = $height;
+
+        $this->decoded_image = $decoded_image;
     }
 
     public function save(): void
     {
-        $crop = Image::load(Storage::disk('avatars')->path($this->uuid.'/'.$this->temp_image));
-
-        $crop->manualCrop($this->width, $this->height, $this->x, $this->y)->save();
-
         $user = Popcorn::postWithFile(
             'users/' . $this->uuid . '/avatar',
             'avatar',
-            Storage::disk('avatars')->path($this->uuid.'/'.$this->temp_image)
+            $this->decoded_image,
+            'image-name',
+            [
+                'width' => $this->width,
+                'height' => $this->height,
+                'x' => $this->x,
+                'y' => $this->y
+            ]
         );
 
         session(['app-user' => [

@@ -2,8 +2,9 @@
 
 namespace App\Livewire\Settings;
 
-use App\Helpers\Popcorn;
+use Flux\Flux;
 use Livewire\Component;
+use App\Helpers\Popcorn;
 
 class Profile extends Component
 {
@@ -63,21 +64,28 @@ class Profile extends Component
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
         ]);
 
-        $user = Popcorn::patch('users/'.$this->uuid, ['data' => $datas]);
+        try {
+            $user = Popcorn::patch('users/'.$this->uuid, ['data' => $datas]);
 
-        session(['app-user' => [
-            'uuid' => $this->uuid,
-            'name' => $user['data']->name,
-            'username' => $user['data']->username,
-            'description' => $user['data']->description,
-            'language' => $user['data']->language,
-            'email' => $user['data']->email,
-            'tmdb_token' => $this->tmdb_token,
-            'public_profile' => $this->public_profile,
-            'profile_picture' => $user['data']->profile_picture,
-        ]]);
+            session(['app-user' => [
+                'uuid' => $this->uuid,
+                'name' => $user['data']->name,
+                'username' => $user['data']->username,
+                'description' => $user['data']->description,
+                'language' => $user['data']->language,
+                'email' => $user['data']->email,
+                'tmdb_token' => $this->tmdb_token,
+                'public_profile' => $this->public_profile,
+                'profile_picture' => $user['data']->profile_picture,
+            ]]);
 
-        cookie()->queue(cookie('locale', $user['data']->language, 120000));
+            cookie()->queue(cookie('locale', $user['data']->language, 120000));
+        } catch (\Exception $e) {
+            Flux::toast(
+                text: __('Something went wrong. Please try again'),
+                variant: 'error',
+            );
+        }
 
         $this->dispatch('profile-updated');
     }

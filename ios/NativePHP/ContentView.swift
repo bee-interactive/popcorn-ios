@@ -2,9 +2,10 @@ import SwiftUI
 import WebKit
 
 struct WebView: UIViewRepresentable {
-    static let dataStore = WKWebsiteDataStore.nonPersistent()
+    static let dataStore = WKWebsiteDataStore.default()
 
     let webView: WKWebView
+    let refreshControl = UIRefreshControl()
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -35,17 +36,9 @@ struct WebView: UIViewRepresentable {
                 decisionHandler(.allow)
             }
         }
-
-        @objc func handleSwipeLeft(_ gesture: UISwipeGestureRecognizer) {
-            if let webView = gesture.view as? WKWebView, webView.canGoForward {
-                webView.goForward()
-            }
-        }
-
-        @objc func handleSwipeRight(_ gesture: UISwipeGestureRecognizer) {
-            if let webView = gesture.view as? WKWebView, webView.canGoBack {
-                webView.goBack()
-            }
+        
+        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            parent.refreshControl.endRefreshing()
         }
     }
 
@@ -89,7 +82,10 @@ struct WebView: UIViewRepresentable {
 
         webView.navigationDelegate = context.coordinator
 
-        webView.scrollView.bounces = false
+        webView.scrollView.bounces = true
+        
+        refreshControl.addTarget(context.coordinator, action: #selector(Coordinator.refreshWebView), for: .valueChanged)
+                webView.scrollView.refreshControl = refreshControl
 
         let fallbackPath = Bundle.main.path(forResource: "index", ofType: "html")
         let fallbackURL = URL(fileURLWithPath: fallbackPath!)
@@ -97,14 +93,7 @@ struct WebView: UIViewRepresentable {
         // Load initial URL
         let startPage = URL(string: "php://127.0.0.1/")
         webView.load(URLRequest(url: startPage ?? fallbackURL))
-
-        let swipeLeft = UISwipeGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleSwipeLeft(_:)))
-        swipeLeft.direction = .left
-        webView.addGestureRecognizer(swipeLeft)
-
-        let swipeRight = UISwipeGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleSwipeRight(_:)))
-        swipeRight.direction = .right
-        webView.addGestureRecognizer(swipeRight)
+        webView.allowsBackForwardNavigationGestures = false;
 
         return webView
     }
@@ -135,5 +124,11 @@ class ConsoleLogger: NSObject, WKScriptMessageHandler {
             print()
             print("JS \(type): \(logMessage)")
         }
+    }
+}
+
+extension WebView.Coordinator {
+    @objc func refreshWebView() {
+        parent.webView.reload()
     }
 }
