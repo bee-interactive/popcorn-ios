@@ -182,5 +182,6 @@
     "Crop your image below to a square format": "Recadrez votre image ci-dessous au format carré",
     "Go Home": "Retour à l’accueil",
     "Invalid credentials": "Identifiants invalides",
-    "Click to set profile picture, jpg, png and max 10MB": "Cliquer pour choisir une image de profil, jpg, png et max 10 Mo"
+    "Click to set profile picture, jpg, png and max 10MB": "Cliquer pour choisir une image de profil, jpg, png et max 10 Mo",
+    "Username must be at least 4 characters, may only contain letters, numbers, and underscores.": "L'identifiant doit comporter au moins 4 caractères, ne peut contenir que des lettres, des chiffres et des underscores."
 }

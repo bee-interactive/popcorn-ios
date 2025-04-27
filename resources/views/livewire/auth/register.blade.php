@@ -15,7 +15,8 @@
 
         <flux:input
             wire:model="username"
-            :label="__('Userame (at least 4 characters)')"
+            :label="__('Username')"
+            description="{{ __('Username must be at least 4 characters, may only contain letters, numbers, and underscores.') }}"
             type="text"
             required
             autofocus

@@ -5,7 +5,7 @@
         <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
             <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
 
-            <flux:input wire:model="username" :label="__('Username')" type="text" required autofocus autocomplete="username" />
+            <flux:input wire:model="username" description="{{ __('Username must be at least 4 characters, may only contain letters, numbers, and underscores.') }}" :label="__('Username')" type="text" required autofocus autocomplete="username" />
 
             <div>
                 <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />
