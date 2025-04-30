@@ -1,0 +1,12 @@
+version: "Apple Swift version 6.1 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)"
+options: "64b778318fce68dae643e37b466c44caed798c622af772c8e481e925e59d676e"
+build_start_time: [1746038118, 949236000]
+build_end_time: [1746038301, 366381000]
+inputs:
+  "/Users/home/Sites/popcorn-ios/ios/NativePHP/AppDelegate.swift": [1744898765, 240107392]
+  "/Users/home/Sites/popcorn-ios/ios/NativePHP/Bridge/NativePHP.swift": [1744898765, 237038248]
+  "/Users/home/Sites/popcorn-ios/ios/NativePHP/ContentView.swift": [1745584590, 255801418]
+  "/Users/home/Sites/popcorn-ios/ios/NativePHP/NativePHPApp.swift": [1745420772, 681921512]
+  "/Users/home/Sites/popcorn-ios/ios/NativePHP/PHPSchemeHandler.swift": [1745840389, 192264979]
+  ? "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/DerivedSources/GeneratedAssetSymbols.swift"
+  : [1746038118, 851726275]

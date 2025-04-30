@@ -1,0 +1,40 @@
+{
+  "" : {
+    "const-values" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHP-master.swiftconstvalues",
+    "dependencies" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHP-master.d",
+    "diagnostics" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHP-master.dia",
+    "emit-module-dependencies" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHP-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHP-master-emit-module.dia",
+    "swift-dependencies" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHP-master.swiftdeps"
+  },
+  "/Users/home/Sites/popcorn-ios/ios/NativePHP/AppDelegate.swift" : {
+    "index-unit-output-path" : "/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/AppDelegate.o",
+    "llvm-bc" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/AppDelegate.bc",
+    "object" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/AppDelegate.o"
+  },
+  "/Users/home/Sites/popcorn-ios/ios/NativePHP/Bridge/NativePHP.swift" : {
+    "index-unit-output-path" : "/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHP.o",
+    "llvm-bc" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHP.bc",
+    "object" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHP.o"
+  },
+  "/Users/home/Sites/popcorn-ios/ios/NativePHP/ContentView.swift" : {
+    "index-unit-output-path" : "/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/ContentView.o"
+  },
+  "/Users/home/Sites/popcorn-ios/ios/NativePHP/NativePHPApp.swift" : {
+    "index-unit-output-path" : "/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHPApp.o",
+    "llvm-bc" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHPApp.bc",
+    "object" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/NativePHPApp.o"
+  },
+  "/Users/home/Sites/popcorn-ios/ios/NativePHP/PHPSchemeHandler.swift" : {
+    "index-unit-output-path" : "/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/PHPSchemeHandler.o",
+    "llvm-bc" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/PHPSchemeHandler.bc",
+    "object" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/PHPSchemeHandler.o"
+  },
+  "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/home/Sites/popcorn-ios/ios/build/Build/Intermediates.noindex/ArchiveIntermediates/NativePHP/IntermediateBuildFilesPath/NativePHP.build/Release-iphoneos/NativePHP.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}
