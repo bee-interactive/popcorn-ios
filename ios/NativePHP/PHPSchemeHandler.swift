@@ -213,7 +213,11 @@ class PHPSchemeHandler: NSObject, WKURLSchemeHandler {
                         properties[.expires] = date
                     }
                 case "httponly":
-                    properties[.setByJavaScript] = false
+                    if #available(iOS 18.2, *) {
+                        properties[.setByJavaScript] = false
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 case "secure":
                     properties[.secure] = true
                 default:
@@ -223,7 +227,11 @@ class PHPSchemeHandler: NSObject, WKURLSchemeHandler {
                 // Attributes like 'HttpOnly' or 'Secure' without value
                 let key = String(pair[0]).lowercased()
                 if key == "httponly" {
-                    properties[.setByJavaScript] = false
+                    if #available(iOS 18.2, *) {
+                        properties[.setByJavaScript] = false
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 } else if key == "secure" {
                     properties[.secure] = true
                 }
