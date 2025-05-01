@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Auth;
 
-use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -20,7 +20,9 @@ class ForgotPassword extends Component
             'email' => ['required', 'string', 'email'],
         ]);
 
-        Password::sendResetLink($this->only('email'));
+        Http::post(config('services.api.url').'auth/request-reset-link', [
+            'email' => $this->only('email')
+        ]);
 
         session()->flash('status', __('A reset link will be sent if the account exists.'));
     }
